@@ -1,0 +1,62 @@
+Install Docker on Ubuntu
+~~~~~~~~~~~~~~~~~~~~~~~~
+````
+sudo apt update
+sudo apt install net-tools
+sudo apt install apt-transport-https
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu/ $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install docker-ce
+sudo systemctl status docker
+sudo usermod -aG docker $USER
+>>>logout/login<<<
+````
+
+Docker commands
+~~~~~~~~~~~~~~~~~~~~~~~~
+````
+docker -v                                | версія Docker Engine
+docker ps                                | список запущенних контейнерів
+docker ps -a                             | список всіх контейнерів
+docker images                            | список локальних Images
+
+docker search nginx                     | знайти Image nginx  в DockerHub не використовуючи офіційний сайт
+docker pull nginx                       | скачати Image nginx  з DockerHub
+
+docker run -it -p 8444:80 nginx         | запуск контейнера інтерактивно, з порта 8444 з назвою nginx 
+docker run -d -p 8444:80 nginx          | запуск контейнера НЕ інтерактивно, з порта 8444 з назвою nginx
+
+docker kill #CONTAINER                                                | видалення контейнера
+docker rm #CONTAINER                                                  | видалення контейнера
+docker rmi nginx --force                                              | видалення Image nginx
+docker rmi $(docker images --filter "dangling=true" -q) --force       | видалення Image з назвою <none>
+````
+
+Docker file
+~~~~~~~~~~~~~~~~~~~~~~~~
+````
+FROM ubuntu:latest
+RUN apt-get -y update
+RUN apt-get -y install apache2
+RUN echo 'Hello world from DockerHub!' > /var/www/html/index.html
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]                         | запуск апача з -d (не інтерактивно)
+EXPOSE 80
+````
+
+docker build -t alex:v1 .             | запуск створеного Dockerfile з назвою alex та підпиом що це версія 1
+docker run -d -p 8446:80 alex:v1      | запуск для перевірки через порт 8446
+
+docker tag alex:v1 alex:copy          | створення копії через Tag
+
+docker exec -it #CONTAINERID /bin/bash   | login на створений міні контейнер
+exit                                     | вихід з міні віртуальної машини
+
+docker commit #CONTAINERID alex:v2       | оновлення версії 1 до версії 2
+docker run -d -p 8448:80 alex:v2         | запуск для перевірки через порт 8448
+
+
+
+
+
+
