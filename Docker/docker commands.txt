@@ -13,6 +13,7 @@ sudo usermod -aG docker $USER
 >>>logout/login<<<
 ````
 
+
 Docker commands
 ~~~~~~~~~~~~~~~~~~~~~~~~
 ````
@@ -33,7 +34,8 @@ docker rmi nginx --force                                              | вида
 docker rmi $(docker images --filter "dangling=true" -q) --force       | видалення Image з назвою <none>
 ````
 
-Docker file
+
+Dockerfile
 ~~~~~~~~~~~~~~~~~~~~~~~~
 ````
 FROM ubuntu:latest
@@ -44,19 +46,23 @@ CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]                         | запу�
 EXPOSE 80
 ````
 
-docker build -t alex:v1 .             | запуск створеного Dockerfile з назвою alex та підпиом що це версія 1
-docker run -d -p 8446:80 alex:v1      | запуск для перевірки через порт 8446
 
-docker tag alex:v1 alex:copy          | створення копії через Tag
+Робота з Dockerfile
+~~~~~~~~~~~~~~~~~~~~~~~~
+````
+docker build -t alex:v1 .                | запуск створеного Dockerfile з назвою alex та підпиом v1
+docker run -d -p 8446:80 alex:v1         | запуск для перевірки через порт 8446
+
+docker tag alex:v1 alex:copy             | створення копії через Tag
 
 docker exec -it #CONTAINERID /bin/bash   | login на створений міні контейнер
 exit                                     | вихід з міні віртуальної машини
 
 docker commit #CONTAINERID alex:v2       | оновлення версії 1 до версії 2
 docker run -d -p 8448:80 alex:v2         | запуск для перевірки через порт 8448
+````
 
-
-
-
-
-
+Push on dockethub.com
+~~~~~~~~~~~~~~~~~~~~~~~~
+sudo docker login
+sudo docker push
