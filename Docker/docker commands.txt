@@ -64,5 +64,34 @@ docker run -d -p 8448:80 alex:v2         | запуск для перевірк�
 
 Push on dockethub.com
 ~~~~~~~~~~~~~~~~~~~~~~~~
+````
 sudo docker login
 sudo docker push
+````
+
+Volume в Dockerfile
+~~~~~~~~~~~~~~~~~~~~~~~~
+````
+
+````
+
+Compose в Dockerfile
+~~~~~~~~~~~~~~~~~~~~~~~~
+````
+version: '3.1'
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: 12345
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8446:8080
+````
+enter localhost:8446 -> login: root / pass: 12345
+docker compose up -d              | підняття контейнера
+docker ps
+docker compose down               | зупинка контейнера
