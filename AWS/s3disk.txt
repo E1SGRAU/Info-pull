@@ -1,0 +1,13 @@
+Joining "S3 bucket" to the instance
+~~~~~~~~~~~~~~~~~~~~~~~~
+````
+sudo apt update
+sudo apt install s3fs -y
+mkdir s3disk
+sudo s3fs -o allow_other -o iam_role=auto -o endpoint="eu-north-1" -o url="https://s3-eu-north-1.amazonaws.com" $NAME S3 BUCKET /home/ubuntu/s3disk/
+cd ..
+cd /etc/
+sudo vim fstab
+	додати до файлу: s3fs#$NAME S3 BUCKET /home/ubuntu/s3disk/ fuse allow_other,nonempty,use_path_request_style,iam_role=auto,url=https://s3-eu-north-1.amazonaws.com,endpoint=eu-north-1 0 0
+>>>reboot<<<
+````
