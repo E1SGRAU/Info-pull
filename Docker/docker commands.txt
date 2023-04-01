@@ -50,7 +50,7 @@ EXPOSE 80
 Робота з Dockerfile
 ~~~~~~~~~~~~~~~~~~~~~~~~
 ````
-docker build -t alex:v1 .                | запуск створеного Dockerfile з назвою alex та підпиом v1
+docker build -t LOGIN/alex:v1 .                | запуск створеного Dockerfile з назвою alex та підпиом v1
 docker run -d -p 8446:80 alex:v1         | запуск для перевірки через порт 8446
 
 docker tag alex:v1 alex:copy             | створення копії через Tag
