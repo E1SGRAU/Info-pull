@@ -1,0 +1,1 @@
+ssh -i name.key ubuntu@adress
