@@ -1,8 +1,8 @@
 Joining "S3 bucket" to the instance
 ~~~~~~~~~~~~~~~~~~~~~~~~
 ````
-sudo apt update
-sudo apt install s3fs -y
+apt update
+apt -y install s3fs
 mkdir s3disk
 sudo s3fs -o allow_other -o iam_role=auto -o endpoint="eu-north-1" -o url="https://s3-eu-north-1.amazonaws.com" $NAME S3 BUCKET /home/ubuntu/s3disk/
 cd ..
