@@ -1,0 +1,7 @@
+РОЗШИРЕННЯ ФАЙЛОВОЇ СИСТЕМИ З 8 ДО 13ГБ
+sudo lsblk
+sudo growpart /dev/nvme0n1 1 (розширили розділ 1 до загального розміру)
+sudo lsblk (перевірка: nvme0n1 13G - > nvme0n1p1 збільшилося до ~12.9G)
+df -hT (файлова система /dev/root = 8.2G, де тип - EXT4)
+sudo resize2fs /dev/nvme0n1p1 (розширили 1 розділ)
+df -hT (перевірка)
