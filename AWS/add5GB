@@ -1,0 +1,10 @@
+df -H
+lsblk (відображення діску на 5гб)
+ДОДАЄМО В ФАЙЛОВУ СИСТЕМУ
+sudo file -s /dev/nvme1n1 (дивимося його файлову систему)
+sudo mkfs -t xfs /dev/nvme1n1 (додаємо в файлову систему)
+cd /mnt/ (тут він буде відображатися)
+sudo mkdir new_volume 
+sudo mount /dev/nvme1n1 /mnt/new_volume/
+ls
+df -H
