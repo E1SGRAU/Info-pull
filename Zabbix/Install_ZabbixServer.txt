@@ -1,0 +1,43 @@
+sudo apt update
+sudo apt-get -y install mysql-server
+
+#Install Zabbix repository
+sudo wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu22.04_all.deb
+sudo dpkg -i zabbix-release_6.4-1+ubuntu22.04_all.deb
+sudo apt update
+
+#Install Zabbix server, frontend, agent
+sudo apt -y install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent
+
+#Create initial database
+mysql -uroot -p
+#Enter: password
+create database zabbix character set utf8mb4 collate utf8mb4_bin;
+create user zabbix@localhost identified by 'password';
+grant all privileges on zabbix.* to zabbix@localhost;
+set global log_bin_trust_function_creators = 1;
+quit;
+
+sudo zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
+
+mysql -uroot -p
+#Enter: password
+set global log_bin_trust_function_creators = 0;
+quit;
+
+#Configure the database for Zabbix server
+cd /etc/zabbix/
+sudo vim zabbix_server.conf
+#change "#DBPassword=" to the "DBPassword=password"
+#change "#Server=" to the "Server=127.0.0.1"
+#change "#ServerActive=" to the "ServerActive=127.0.0.1"
+
+#Start Zabbix server and agent processes
+systemctl restart zabbix-server zabbix-agent apache2
+systemctl enable zabbix-server zabbix-agent apache2
+
+#Open Zabbix UI web page http://host/zabbix and click next, next, next, install xD
+
+#Maybe, you need to enable the agent
+sudo service zabbix-agent status
+sudo service zabbix-agent start
