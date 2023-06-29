@@ -1,0 +1,46 @@
+#docker must be installed
+sudo service docker status
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#Інтерфейс командного рядка AWS (AWS CLI) є єдиним інструментом для керування сервісами AWS. 
+#Завантаживши його, ви зможете контролювати безліч сервісів AWS з командного рядка і автоматизувати їх за допомогою скриптів.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - I N F O - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#The AWS Command Line Interface (AWS CLI) is a single tool for managing AWS services. 
+#By downloading just one tool, you can control many AWS services from the command line and automate them using scripts.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#installation clli
+sudo apt -y install awscli
+sudo apt -y update
+
+#configure clli
+aws configure
+    #Enter -> AWS Access Key ID
+    #Enter -> AWS Secret Access Key
+    #Enter -> Default region name
+    #Enter -> Default output format: json
+
+#let's give rights to the docker
+sudo usermod -aG docker ubuntu
+sudo reboot
+
+#create repository in Amazon Elastic Container Registry (ECR)
+#create Dockerfile
+vim Dockerfile
+````
+FROM ubuntu:latest
+RUN apt-get -y update
+RUN apt-get -y install apache2
+RUN echo 'Hello world from DockerHub!' > /var/www/html/index.html
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
+EXPOSE 80
+````
+
+#use in ECR "View push commands", EXAMPLE:
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o2mdfdhf
+docker build -t alex .
+docker tag alex:latest public.ecr.aws/o2mdfdhf/alex:latest
+docker push public.ecr.aws/o2mdfdhf/alex:latest
+
+#run and test
+docker run -d --restart=always -p 80:80 --name apache public.ecr.aws/o2mdfdhf/alex:latest
