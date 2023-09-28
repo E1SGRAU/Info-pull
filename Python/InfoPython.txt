@@ -1,0 +1,106 @@
+# from name_file import *
+def div (x):
+    try:
+        return 42/x
+    except Exception as error:
+        print("! ERROR !")
+x = div(0); print(x)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+import random
+y = random.randint(1,10); print("y")
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+x%2 == 0 # остача від двух
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -        
+city = ["Lviv", "Lutsk", "Kiev", "Lisabon"]; count = len(city)
+for i in range(count):
+    for j in city:
+        if j.startswith("L"): #endswith('v'):
+            city.remove(j)
+        else:
+            pass
+print(city)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+city = ["Lviv", "Lutsk", "Kiev", "Lisabon"]
+x = city; x.sort(reverse=True); print(x)
+city1 = ["Lviv", "Lutsk", "Kiev", "Lisabon"] #список
+city2 = ("Lviv", "Lutsk", "Kiev", "Lisabon") #кортедж - константний
+result_city1= tuple(city1) #перетворює в кортеж
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+test = {'a':'Alex', 's':'Sasha'} #  ключ / значення
+for x in test.keys():
+    print(x)
+for x in test.values():
+    print(x)
+x = test.get('a')
+print(x)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+name = 'Alexander'
+res = f'My name is {name}'
+print(res)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+import os
+dir = r"D:\It Step\Python"; #print(dir)
+way = os.chdir(dir) # перехід в цю директорію
+show = os.listdir(way) # що в середині директорії
+print(show)
+whereWE = os.getcwd() # місце знаходження
+print(whereWE)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+os.mkdir(r"D:\It Step\Python\HomeWork")
+os.remove(r"D:\It Step\Python\HomeWork\test_home_work.txt")
+os.rmdir(r"D:\It Step\Python\HomeWork")
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+import shutil
+delete = shutil.rmtree(r"D:\It Step\Python\HomeWork")
+shutil.copytree("що скопіювати", "куди скопіювати", dirs_exist_ok=True)
+shutil.move("що скопіювати", "куди скопіювати") #вирізати
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+file = r"D:\It Step\Python\HomeWork\test.txt"
+file = open(file, "a")
+file.write("H E L L O - W O R L D !") #записуємо в файл
+file.close()
+# w - перезапис
+# a - додати до існуючого
+# r - прочитати
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+search = "W O R L D"
+replace = "E A R P H"
+
+with open(r"D:\It Step\Python\HomeWork\test.txt", 'r') as file:
+    data = file.read()
+    data = data.replace(search,replace)
+with open(r"D:\It Step\Python\HomeWork\test.txt", 'w') as file:
+    file.write(data)
+    print(data)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+way = r'D:\It Step\Python\test.txt'
+check = os.path.exists(way) # чи існує шлях
+#print(check)
+# видаляємо файл
+if check == True:
+    os.remove(way)
+else:
+    pass
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+import os
+way = r'D:\It Step'
+for folderName, subfolders, filenames in os.walk(way, True):
+    print("Теперішня папка - " + folderName)
+    for subfolder in subfolders:
+        print("Підпапка папки"+ folderName + ":" + subfolder)
+    for filename in filenames:
+        print('Файли в папці '+ folderName + ":" + filename)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+import os
+way = r'D:\It Step\Python\HomeWork'
+for folderName, subfolders, filenames in os.walk(way, True):
+    print("Теперішня папка - " + folderName)
+    for filename in filenames:
+        print('Файли в папці '+ folderName + ":" + filename)
+        for file in filenames:
+            if file.endswith('.txt'):
+                try:
+                    os.remove(os.path.join(folderName,file))
+                except Exception as error:
+                    pass
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
