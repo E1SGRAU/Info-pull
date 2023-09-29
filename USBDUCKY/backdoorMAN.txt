@@ -1,3 +1,5 @@
+# "Microsoft Windows" WinRM and SMB Backdoor
+
 DELAY 1000
 GUI r
 DELAY 1000
