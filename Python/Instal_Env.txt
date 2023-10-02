@@ -1,0 +1,5 @@
+# потрібно знаходитися в створеній папці, куди буде виконані наступні команди:
+pip install boto3
+pip install virtualenv
+pip3 show virtualenv
+python.exe -m venv env
