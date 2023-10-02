@@ -1,4 +1,19 @@
+provider "aws" {
+    region = "eu-north-1"
+    access_key = ""
+    secret_key = ""
+}
+resource "aws_instance" "name" {
+  count = 1
+  ami = ""
+  vpc_security_group_ids = ["5"]
+  key_name = ""
+  instance_type = "t3.micro"
+}
+
 terraform init
 terraform plan
 terraform apply -> yes
-terraform destroy
+
+terraform destroy -> yes -> ~30-40 seconds
+
