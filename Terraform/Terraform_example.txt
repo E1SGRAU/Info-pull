@@ -1,0 +1,42 @@
+provider "aws" {
+    region = "eu-north-1"
+    access_key = var.aws_accses_key
+    secret_key = var.aws_secret_key
+}
+resource "aws_instance" "name" {
+  count = 1
+  ami = var.aws_ami
+  vpc_security_group_ids = [aws_security_group.web.id]
+  key_name = var.aws_key
+  instance_type = var.aws_instance_type
+  tags = {
+    Name = "terraform_1"
+    Owner = "Alex13"
+    Project = "It_Step"
+  }
+}
+resource "aws_security_group" "web" {
+    name_prefix = "web"
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = "udp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    egress {
+        from_port = 0
+        protocol = "-1"
+        to_port = 0
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    tags = {
+        Name = "terraform_SG"
+    }
+}
+
+
+terraform init
+terraform plan
+terraform apply -> yes -> ~30-40 seconds
+
+terraform destroy -> yes -> ~30-40 seconds
