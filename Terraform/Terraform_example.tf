@@ -9,17 +9,15 @@ resource "aws_instance" "name" {
   vpc_security_group_ids = [aws_security_group.web.id]
   key_name = var.aws_key
   instance_type = var.aws_instance_type
-  
-  user_data = file("file.sh")
-
   tags = {
-    Name = "terraform_3"
+    Name = "terraform_6"
     Owner = "Alex13"
     Project = "It_Step"
   }
 }
 resource "aws_security_group" "web" {
     name = "web"
+    vpc_id = aws_vpc.main_vpc.id
     description = "example dynamic SG"
     dynamic "ingress" {
         for_each = ["80", "443", "8080", "22"]
