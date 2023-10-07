@@ -1,0 +1,4 @@
+terraform init - перевірка цілісності файлів
+terraform plan - перевірка написаного
+terraform apply - будування проекту
+terraform destroy - знищення проекту
