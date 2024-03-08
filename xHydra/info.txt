@@ -1,8 +1,8 @@
 root@kali:~# hydra -h
 Syntax: hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] | [-C FILE]] [-e nsr] [-o FILE] [-t TASKS] [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET] [-c TIME] [-ISOuvVd46] [-m MODULE_OPT] [service://server[:PORT][/OPT]]
 Options:
-  -R        restore a previous aborted/crashed session
-  -I        ignore an existing restore file (don't wait 10 seconds)
+  -R        відновити попередній перерваний сеанс
+  -I        ігнорую існуючий файл відновлення (не чекати 10 секунд)
   -S        perform an SSL connect
   -s PORT   if the service is on a different default port, define it here
   -l LOGIN or -L FILE  login with LOGIN name, or load several logins from FILE
@@ -11,7 +11,7 @@ Options:
   -y        disable use of symbols in bruteforce, see above
   -r        use a non-random shuffling method for option -x
   -e nsr    try "n" null password, "s" login as pass and/or "r" reversed login
-  -u        loop around users, not passwords (effective! implied with -x)
+  -u        цикл навколо користувачів, а не паролів (ефективно! мається на увазі з -x)
   -C FILE   colon separated "login:pass" format, instead of -L/-P options
   -M FILE   list of servers to attack, one entry per line, ':' to specify port
   -o FILE   write found login/password pairs to FILE instead of stdout
