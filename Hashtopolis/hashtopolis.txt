@@ -1,0 +1,36 @@
+# Login as root
+sudo su 
+
+# update system and install mysql
+apt update 
+apt-get install mysql-server
+
+# install different repository
+apt-get install apache2 libapache2-mod-php php-mysql php php-gd php-pear php-curl git
+
+# Create database
+mysql_secure_installation
+mysql -u root
+CREATE DATABASE hashtopolis;
+CREATE USER 'hashtopolis'@'localhost' IDENTIFIED BY 'hashtopolis';
+GRANT ALL PRIVILEGES ON hashtopolis.* TO 'hashtopolis'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+cd /var/www/
+git clone https://github.com/s3inlc/hashtopolis
+cd hashtopolis
+vim /etc/apache2/sites-available/000-default.conf
+
+# Change the followings 
+cd /var/www/hashtoplis/src
+vim /etc/php/7.2/apache2/php.ini
+
+#Change this line
+
+memory_limit = 512M
+upload_max_filesize = 500M
+post_max_size = 500M
+
+service apache2 reload
+chown -R www-data:www-data .
