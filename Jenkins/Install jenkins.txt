@@ -29,3 +29,13 @@ cat /root/.ssh/id_ed25519.pub
 cat /root/.ssh/id_ed25519
 
 -----------------------------------------------------------------------------
+
+sudo mkdir -p /var/lib/jenkins/.ssh/
+sudo cp /root/.ssh/id_ed25519 /var/lib/jenkins/.ssh/
+sudo cp /root/.ssh/id_ed25519.pub /var/lib/jenkins/.ssh/
+sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh/
+sudo chmod 700 /var/lib/jenkins/.ssh/
+sudo chmod 600 /var/lib/jenkins/.ssh/id_ed25519
+sudo chmod 644 /var/lib/jenkins/.ssh/id_ed25519.pub
+sudo -u jenkins ssh-keyscan -t ed25519 github.com >> /var/lib/jenkins/.ssh/known_hosts
+sudo systemctl restart jenkins
