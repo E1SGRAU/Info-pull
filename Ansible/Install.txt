@@ -1,0 +1,35 @@
+--- --- --- --- --- --- --- --- --- --- ---
+--- Install Ansible on the linux/ubuntu ---
+--- --- --- --- --- --- --- --- --- --- ---
+python3 --version
+sudo apt update
+sudo apt -y install python3-pip
+sudo apt -y install ansible
+sudo apt update
+
+#Переміщюємо/створюємо ssh ключ від підключених linux-сів та даємо права
+cd .ssh/
+sudo chmod 400 Key.pem
+
+#Створюємо директорію для Ansible, в ній створюємо хости та параметри з підключенням до того чи іншого хоста
+sudo mkdir Ansible
+cd Ansible/
+sudo vim Hosts.txt
+    [linux_server]
+    UserUbuntu1 ansible_host="ip-address"
+    [windows_server]
+    UserWindows1 ansible_host="ip-address"
+sudo mkdir group_vars
+sudo vim windows_server
+    ansible_user : Administrator
+    ansible_password : password
+    ansible_port : 5986
+    ansible_connection : winrm
+    ansible_winrm_server_cert_validation : ignore
+sudo vim linux_server
+    ansible_user : ubuntu
+    ansible_private_key_file : /home/ubuntu/.ssh/Key.pem
+
+#Перевірка з'єднання "ping"
+ansible -i Hosts.txt linux_server -m ping
+ansible -i Hosts.txt windows_server -m win_ping
