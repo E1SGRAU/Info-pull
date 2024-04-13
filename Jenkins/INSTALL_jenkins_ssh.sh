@@ -36,10 +36,10 @@ systemctl restart jenkins
 usermod -aG docker jenkins
 service jenkins restart
 
-echo "\n\t KEY FROM  JENKINS\n"
+echo "KEY FROM JENKINS: "
 cat /var/lib/jenkins/secrets/initialAdminPassword
-echo "\n\t SSH_KEY.pub\n"
+echo "SSH_KEY.pub: "
 cat /root/.ssh/id_ed25519.pub
-echo "\n\t SSH_KEY.priv\n"
+echo "SSH_KEY.priv: "
 cat /root/.ssh/id_ed25519
-echo "\n\n"
+echo "FINISH"
